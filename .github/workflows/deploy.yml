@@ -1,0 +1,19 @@
+name: CI/CD for Portfolio
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run HTML Linter
+        uses: chabad360/htmlproofer@master
+        with:
+          directory: "./"
+          arguments: "--assume-extension --disable-external"
